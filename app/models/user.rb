@@ -8,5 +8,7 @@ class User < ApplicationRecord
   end
 
   validates :name, presence: true
-  validates :post_counter, numericality: {only_integer: true, greater_than_or_equal_to: 0, message: 'Must be an integer greater than zero(0)'}
+  validates :post_counter,
+            numericality: { only_integer: true, greater_than_or_equal_to: 0,
+                            message: 'Must be an integer greater than zero(0)' }
 end

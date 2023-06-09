@@ -15,7 +15,11 @@ class Post < ApplicationRecord
     author.increment!(:post_counter)
   end
 
-  validates :title, presence: true, length: {minimum: 5, maximum: 255}
-  validates :comment_counter, numericality: {only_integer: true, greater_than_or_equal_to: 0, message: 'Must be an integer ggreater than equal to zero'}
-  validates :likes_counter, numericality: {only_integer: true, greater_than_or_equal_to: 0, message: 'Must be an integer ggreater than equal to zero'}
+  validates :title, presence: true, length: { minimum: 5, maximum: 255 }
+  validates :comment_counter,
+            numericality: { only_integer: true, greater_than_or_equal_to: 0,
+                            message: 'Must be an integer ggreater than equal to zero' }
+  validates :likes_counter,
+            numericality: { only_integer: true, greater_than_or_equal_to: 0,
+                            message: 'Must be an integer ggreater than equal to zero' }
 end
