@@ -47,9 +47,30 @@ RSpec.describe Post, type: :model do
   end
 
   context 'return the recent five comments' do
-    it 'should return the five comments' do
+    it 'should return the recent five comments' do
       recent_comments = @post.comments.order(created_at: :desc).limit(5)
       expect(recent_comments).to match_array([@comment6, @comment5, @comment4, @comment3, @comment2])
+    end
+  end
+
+  context 'should test the post models logic' do
+    it 'should fetch the recent five comments' do
+      recent_comments = @post.recent_five_comments
+      expect(recent_comments).to match_array([@comment6, @comment5, @comment4, @comment3, @comment2])
+    end
+  end
+
+  describe 'update posts counter' do
+    let(:user) { User.create(name: 'Shafiu', photo: 'https://example.com/photo.jpg', post_counter: 0, bio: 'Lorem ipsum') }
+    let(:post) do
+      Post.new(title: 'Test Post', author: user, text: 'Is Microverse really the best tech school out there?',
+               comment_counter: 0, likes_counter: 0)
+    end
+
+    it 'increments the author\'s post_counter' do
+      post.save
+      # It will calll update_posts_counter automatically after saving successfully
+      expect(user.post_counter).to eq(1)
     end
   end
 end
