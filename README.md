@@ -3,10 +3,8 @@
 
 <!-- TABLE OF CONTENTS -->
 
-* Configuration
 # 📗 Table of Contents
 
-* Database creation
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
