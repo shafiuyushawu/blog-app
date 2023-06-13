@@ -1,8 +1,4 @@
-# README
-<a name="readme-top"></a>
-<div >
 
-Things you may want to cover:
   <h1><b>Blog App</b></h1>
 
 <!-- TABLE OF CONTENTS -->
