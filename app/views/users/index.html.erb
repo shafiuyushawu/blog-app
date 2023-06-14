@@ -1,1 +1,17 @@
-<h1>List of users</h1>
+<div class=' grid grid-col gap-4 '>
+  <% @users.each do |user| %>
+    <%= link_to user_path(user.id), class: ' flex gap-4' do %>
+      <div class="border border-[#bdc3c7] hover:border-[#2980b9] w-1/4 p-4 shadow-xl">
+        <div className="avatar">
+          <div className="w-24 rounded-full">
+            <img src="<%=user.photo%>" />
+          </div>
+        </div>
+      </div>
+      <div class="border border-[#bdc3c7] hover:border-[#2980b9] flex  justify-between w-9/12 shadow-xl gap-4 p-4">
+        <h1 class='text-xl'><%=user.name%></h1>
+        <p>Number of posts: <%=user.post_counter%></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

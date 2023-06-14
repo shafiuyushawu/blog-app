@@ -1,1 +1,30 @@
-<h1>List of users by id</h1>
+<div class='grid grid-col gap-2'>
+  <div class='flex gap-4 shadow-xl'>
+    <div class="border w-1/4 p-4 shadow-xl">
+      <div className="avatar">
+        <div className="w-24 rounded-full">
+          <img src="<%=@user.photo%>" />
+        </div>
+      </div>
+    </div>
+    <div class="border flex  justify-between w-9/12 gap-4 shadow-xl p-4">
+      <h1 class='text-xl'><%=@user.name%></h1>
+      <p>Number of posts: <%=@user.post_counter%></p>
+    </div>
+  </div>
+  <div class='border p-10 flex flex-col gap-4 shadow-xl'>
+    <h2 class='text-2xl'>Bio:</h2>
+    <p><%=@user.bio%></p>
+  </div>
+   <div class='border p-10 flex flex-col gap-4 shadow-xl'>
+    <h2 class='text-2xl'>Bio:</h2>
+    <p><%=@user.bio%></p>
+  </div>
+  <div class='border p-10 flex flex-col gap-4 shadow-xl'>
+    <% if @user.three_recent_posts.empty %>
+      <%link_to user_post_path(user_id:@user.id, id: post.id)%>
+    <%else%>
+
+    <% end %>
+  </div>
+</div>
