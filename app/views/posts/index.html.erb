@@ -1,1 +1,38 @@
-<h1>List of post by a user</h1>
+<div class='grid grid-col gap-4'>
+  <div class="flex gap-4 shadow-xl">
+    <div class="border w-1/4 p-4 shadow-xl">
+      <div class="avatar">
+        <div class="w-24 rounded-full border">
+          <img src="<%= @user.photo %>" alt="User Photo" />
+        </div>
+      </div>
+    </div>
+    <div class="border flex justify-between w-9/12 gap-4 shadow-xl p-4">
+      <h1 class="text-4xl"><%= @user.name %></h1>
+      <p>Number of posts: <%= @user.post_counter %></p>
+    </div>
+  </div>
+  <% @posts.each do |post| %>
+    <%= link_to user_post_path(user_id: @user.id, author_id: post.id) do %>
+      <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex flex-col justify-between shadow-xl gap-4 p-4">
+        <div>
+          <h1><%= post.title %></h1>
+          <p><%= post.text %></p>
+        </div>
+        <div class='flex gap-4'>
+          <p>Comments: <%= post.comment_counter %></p>
+          <p>Likes: <%= post.likes_counter %></p>
+        </div>
+      </div>
+      <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex flex-col justify-between shadow-xl gap-4 p-4">
+        <% if post.recent_five_comments.empty?%>
+          <p>No comments</p>
+        <%else%>
+          <%post.recent_five_comments.each do |comment|%>
+            <p><%=comment.author.name%>: <%=comment.text%></p>
+          <%end%>
+        <%end%>
+      </div>
+    <% end %>
+  <% end %>
+</div>
