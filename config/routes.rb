@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :posts, only: [:index, :show], param: :author_id
   end
-  resources :posts, only: [:index, :show]
+  resources :posts, only: [:index, :show], param: :post_id
 end

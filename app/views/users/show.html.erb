@@ -1,40 +1,39 @@
-<div class="grid grid-cols gap-2">
+<div class="grid grid-cols gap-2 ">
   <div class="flex gap-4 shadow-xl">
-    <div class="border w-1/4 p-4 shadow-xl">
+    <div class=" w-1/5 p-4 shadow-xl">
       <div class="avatar">
-        <div class="w-24 rounded-full border">
+        <div class="w-24 rounded-full ">
           <img src="<%= @user.photo %>" alt="User Photo" />
         </div>
       </div>
     </div>
-    <div class="border flex justify-between w-9/12 gap-4 shadow-xl p-4">
-      <h1 class="text-4xl"><%= @user.name %></h1>
-      <p>Number of posts: <%= @user.post_counter %></p>
+    <div class=" border-[#bdc3c7] flex justify-between w-4/5 shadow-xl gap-4 p-4">
+      <div>
+        <h1 class='text-5xl'><%= @user.name %></h1>
+      </div>
+      <div class='grid grid-row items-end gap-4'>
+        <p class='text-sm'>Number of posts: <%= @user.post_counter %></p>
+      </div>
     </div>
   </div>
-  <div class="border p-10 flex flex-col gap-4 shadow-xl">
+  <div class=" border-[#bdc3c7]  p-10 flex flex-col gap-4 shadow-xl">
     <h2 class="text-2xl">Bio</h2>
     <p><%= @user.bio %></p>
   </div>
-  <div class="border p-10 flex flex-col gap-4 shadow-xl">
-    <h2 class="text-2xl">Bio:</h2>
-    <p><%= @user.bio %></p>
-  </div>
-  <div class="border p-10 flex flex-col gap-4 shadow-xl">
+  <div class=" border-[#bdc3c7]  p-10 flex flex-col gap-4 shadow-xl">
     <% if @user.three_recent_posts.empty? %>
       <h2>No Posts</h2>
       <p>Kindly submit a post</p>
     <% else %>
       <% @user.three_recent_posts.each do |post| %>
           <%= link_to user_post_path(user_id: @user.id, author_id: post.id) do %>
-            <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex flex-col justify-between shadow-xl gap-4 p-4">
+            <div class="flex justify-between shadow-xl gap-4 p-4 hover:shadow-2xl hover:border-[#0688df]">
               <div>
-                <h1><%= post.title %></h1>
+                <h1 class='text-2xl'><%= post.title %></h1>
                 <p><%= post.text %></p>
               </div>
-              <div class='flex gap-4'>
-                <p>Comments: <%= post.comment_counter %></p>
-                <p>Likes: <%= post.likes_counter %></p>
+              <div class='grid grid-row gap-4'>
+                <p class='text-sm'>Comments: <%= post.comment_counter %>, Likes: <%= post.likes_counter %></p>
               </div>
             </div>
           <% end %>

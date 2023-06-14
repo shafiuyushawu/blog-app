@@ -14,17 +14,16 @@
   </div>
   <% @posts.each do |post| %>
     <%= link_to user_post_path(user_id: @user.id, author_id: post.id) do %>
-      <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex flex-col justify-between shadow-xl gap-4 p-4">
+      <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex justify-between shadow-xl gap-4 p-4">
         <div>
-          <h1><%= post.title %></h1>
+          <h1 class='text-2xl'><%= post.title %></h1>
           <p><%= post.text %></p>
         </div>
-        <div class='flex gap-4'>
-          <p>Comments: <%= post.comment_counter %></p>
-          <p>Likes: <%= post.likes_counter %></p>
+        <div class='grid grid-row items-end gap-4'>
+          <p class='text-sm'>Comments: <%= post.comment_counter %>, Likes: <%= post.likes_counter %></p>
         </div>
       </div>
-      <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex flex-col justify-between shadow-xl gap-4 p-4">
+      <div class=" flex flex-col justify-between shadow-xl gap-4 p-4">
         <% if post.recent_five_comments.empty?%>
           <p>No comments</p>
         <%else%>
