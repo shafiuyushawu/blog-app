@@ -1,1 +1,46 @@
-<h1>List of users by id</h1>
+<div class="grid grid-cols gap-2 ">
+  <div class="flex gap-4 shadow-xl">
+    <div class=" w-1/5 p-4 shadow-xl">
+      <div class="avatar">
+        <div class="w-24 rounded-full ">
+          <img src="<%= @user.photo %>" alt="User Photo" />
+        </div>
+      </div>
+    </div>
+    <div class=" border-[#bdc3c7] flex justify-between w-4/5 shadow-xl gap-4 p-4">
+      <div>
+        <h1 class='text-5xl'><%= @user.name %></h1>
+      </div>
+      <div class='grid grid-row items-end gap-4'>
+        <p class='text-sm'>Number of posts: <%= @user.post_counter %></p>
+      </div>
+    </div>
+  </div>
+  <div class=" border-[#bdc3c7]  p-10 flex flex-col gap-4 shadow-xl">
+    <h2 class="text-2xl">Bio</h2>
+    <p><%= @user.bio %></p>
+  </div>
+  <div class=" border-[#bdc3c7]  p-10 flex flex-col gap-4 shadow-xl">
+    <% if @user.three_recent_posts.empty? %>
+      <h2>No Posts</h2>
+      <p>Kindly submit a post</p>
+    <% else %>
+      <% @user.three_recent_posts.each do |post| %>
+          <%= link_to user_post_path(user_id: @user.id, author_id: post.id) do %>
+            <div class="flex justify-between shadow-xl gap-4 p-4 hover:shadow-2xl hover:border-[#0688df]">
+              <div>
+                <h1 class='text-2xl'><%= post.title %></h1>
+                <p><%= post.text %></p>
+              </div>
+              <div class='grid grid-row gap-4'>
+                <p class='text-sm'>Comments: <%= post.comment_counter %>, Likes: <%= post.likes_counter %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <div class='flex items-center justify-center'>
+          <%= link_to 'See all posts', user_posts_path(user_id: @user.id), class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+  </div>
+</div>
