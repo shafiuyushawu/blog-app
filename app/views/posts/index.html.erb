@@ -1,3 +1,6 @@
+
+<%= render 'layouts/posts_form' %>
+
 <div class='grid grid-col gap-4'>
   <div class="flex gap-4 shadow-xl">
     <div class="border w-1/4 p-4 shadow-xl">
@@ -12,6 +15,9 @@
       <p>Number of posts: <%= @user.post_counter %></p>
     </div>
   </div>
+    <div class="flex gap-4>
+  <button>Add new post<button>
+    </div>
   <% @posts.each do |post| %>
     <%= link_to user_post_path(user_id: @user.id, author_id: post.id) do %>
       <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex justify-between shadow-xl gap-4 p-4">

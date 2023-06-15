@@ -6,7 +6,7 @@ default: &default
 development:
   <<: *default
   database: blog_app_development
-  username: shafiu
+  username: postgres
   password: "Soccer"
   port: 5432
 
