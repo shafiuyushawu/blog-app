@@ -8,6 +8,10 @@
       <p class='text-sm'>Comments: <%= @post.comment_counter %>, Likes: <%= @post.likes_counter %></p>
     </div>
   </div>
+  <div>
+  <%= link_to "Add comments", new_user_post_comment_path(user_id: @user.id, post_id: @post.id, post_author_id: @post.author_id), class: "btn btn-success btn-sm" %>
+
+  </div>
   <div class="border-[#bdc3c7]  grid p-10 gap-10 shadow-xl ">
     <%if @comments.empty?%>
       <p>No Comments</p>

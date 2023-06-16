@@ -3,10 +3,10 @@
 <%= form_with model: @post, url: user_posts_path do |form| %>
   <div class="flex flex-col gap-4">
     <div class="field">
-      <%= form.text_field :title, size:"65x6", class:"p-5", placeholder: "Post title", class: "w-1/2" %>
+      <%= form.text_field :title, size:"65x6", placeholder: "Post title", class: "w-1/2" %>
     </div>
     <div class="field">
-      <%= form.text_area :text,size:"70x6", class:"p-5", placeholder: "Your post content", class: "w-1/2" %>
+      <%= form.text_area :text,size:"70x6", placeholder: "Your post content", class: "w-1/2" %>
     </div>
   </div>
   <%= form.submit "Add New Post", class: "btn btn-primary" %>
