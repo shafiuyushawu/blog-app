@@ -1,6 +1,0 @@
-<h1>Create a Post<h1>
-<%= form_with url: user_posts_path do |form| %>
-  <form.text_field :title, placeholder: 'Post title'>
-  <form.text_area :text, size: '70x6', placeholder: 'Your post content'>
-  <%form.submit "Add New Post", class: 'btn btn-primary'%>
-<% end %>
