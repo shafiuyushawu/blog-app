@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+ruby '3.0.6'
+
+gem 'font-awesome-sass', '~> 6.4.0'
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

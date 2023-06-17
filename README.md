@@ -34,27 +34,21 @@
 
 ## 🛠 Built With <a name="built-with"></a>
 
-* ...
 ### Tech Stack <a name="tech-stack"></a>
 
-<details>
-  <summary>Client</summary>
-  <ul>
-    <li>HTML(erb), CSS</li>
-  </ul>
-</details>
+> [Ruby on Rails](https://guides.rubyonrails.org/) (simplify as Rails) is a server-side web application framework written in Ruby under the MIT License. Rails is a model–view–controller (MVC) framework, providing default structures for a database, a web service, and web pages. It encourages and facilitates the use of web standards such as JSON or XML for data transfer and HTML, CSS and JavaScript for user interfacing.
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li>Rails</li>
+    <li><a href="https://guides.rubyonrails.org/">Ruby on Rails</a></li>
   </ul>
 </details>
 
 <details>
 <summary>Database</summary>
   <ul>
-    <li>Postgress</li>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
   </ul>
 </details>
 
@@ -62,10 +56,17 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **User can post.**
-- **User login**
-- **User can read, comment and like on other user post.**
-
+- **Add users**
+- **Post comments**
+- **Comment on Posts**
+- **Test for MODELS**
+- **Validation for MODELS**
+- **Controllers**
+- **Basic HTML**
+- **Test for Controllers'**
+- **Views**
+- **Like posts**
+- **Comment on posts**
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
