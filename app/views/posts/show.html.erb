@@ -9,8 +9,10 @@
     </div>
   </div>
   <div>
-  <%= link_to "Add comments", new_user_post_comment_path(user_id: @user.id, post_id: @post.id, post_author_id: @post.author_id), class: "btn btn-success btn-sm" %>
-
+  <div class="flex gap-2">
+    <%= link_to "Add comments", new_user_post_comment_path(@user, @post), class: "btn btn-success btn-sm" %>
+    <%= button_to "Add Likes", user_post_likes_path(@user, @post), method: :post, class: "btn btn-info btn-sm"%>
+  </div>
   </div>
   <div class="border-[#bdc3c7]  grid p-10 gap-10 shadow-xl ">
     <%if @comments.empty?%>
