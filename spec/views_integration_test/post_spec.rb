@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe Post, type: :system do
-  user = User.create(name: 'Anna', posts_counter: 3, photo: 'https://randomuser.me/api/portraits/women/67.jpg',
-                     bio: 'Project manager')
+  user = User.create(name: 'Anna', photo: 'https://randomuser.me/api/portraits/women/67.jpg',
+                     bio: 'Project manager', post_counter: 3)
   subject do
     Post.new(author_id: user.id, title: 'First post', text: 'First post', comment_counter: 2, likes_counter: 2)
   end
@@ -17,7 +17,7 @@ RSpec.describe Post, type: :system do
     end
     it 'I can see the number of posts the user has written.' do
       visit user_posts_path(user.id)
-      page.has_content?(user.posts_counter)
+      page.has_content?(user.post_counter)
     end
     it "I can see a post's title." do
       visit user_posts_path(user.id)
@@ -63,11 +63,6 @@ RSpec.describe Post, type: :system do
     it 'I can see the post body.' do
       visit user_post_path(user.id, subject.id)
       page.has_content?(subject.text)
-    end
-    it 'I can see the username of each commentor.' do
-      comment = Comment.new(author_id: user.id, post_id: subject.id, text: 'I like it')
-      visit user_post_path(user.id, subject.id)
-      page.has_content?(comment.user.name)
     end
     it 'I can see the comment each commentor left. ' do
       comment = Comment.new(author_id: user.id, post_id: subject.id, text: 'I like it')

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :system do
-  subject { User.new(name: 'Anna', posts_counter: 3, photo: 'https://randomuser.me/api/portraits/women/67.jpg', bio: 'Project manager') }
+  subject { User.new(name: 'Shafiu', photo: 'https://randomuser.me/api/portraits/women/67.jpg', bio: 'Project manager', post_counter: 3) }
 
   before { subject.save }
 
@@ -18,15 +18,21 @@ RSpec.describe User, type: :system do
 
     it 'I can see the number of posts each user has written.' do
       visit root_path(subject)
-      page.has_content?(subject.posts_counter)
+      page.has_content?(subject.post_counter)
     end
 
-    it "When I click on a user, I am redirected to that user's show page." do
-      user2 = User.create(name: 'Lilly', posts_counter: 2, photo: 'https://randomuser.me/api/portraits/women/70.jpg',
-                          bio: 'Teacher from Poland.')
-      visit root_path(user2)
-      click_on 'Lilly'
-      page.has_content?('Lilly')
+    it "redirects to the user's show page" do
+      user2 = User.create(name: 'Yushawu', photo: 'https://randomuser.me/api/portraits/women/70.jpg',
+                          bio: 'Teacher from Poland.', post_counter: 2)
+
+      visit root_path
+
+      within('.grid') do
+        click_link('Yushawu')
+      end
+
+      expect(page).to have_content('Yushawu')
+      expect(current_path).to eq(user_path(user2))
     end
   end
 
@@ -43,7 +49,7 @@ RSpec.describe User, type: :system do
 
     it 'I can see the number of posts the user has written.' do
       visit user_path(subject.id)
-      page.has_content?(subject.posts_counter)
+      page.has_content?(subject.post_counter)
     end
 
     it "I can see the user's bio." do
@@ -55,13 +61,13 @@ RSpec.describe User, type: :system do
       Post.create(
         [
           {
-            user: subject, title: 'First Post', text: 'My first post'
+            author: subject, title: 'First Post', text: 'My first post'
           },
           {
-            user: subject, title: 'Second Post', text: 'My Second post'
+            author: subject, title: 'Second Post', text: 'My Second post'
           },
           {
-            user: subject, title: 'Third Post', text: 'My Third post'
+            author: subject, title: 'Third Post', text: 'My Third post'
           }
         ]
       )
@@ -74,12 +80,23 @@ RSpec.describe User, type: :system do
       page.has_button?('See all posts')
     end
 
-    it "When I click to see all posts, it redirects me to the user's post's index page." do
-      visit user_path(subject.id)
-      click_on 'See all posts'
-      visit user_posts_path(subject.id)
-      page.has_content?('Anna')
+
+
+    it "redirects to the user's posts index page" do
+      user = User.create(name: 'John Doe', photo: '', bio: 'Bio text', post_counter: 3)
+      post1 = user.posts.create(title: 'Post 1', text: 'Text 1', comment_counter: 2, likes_counter: 5)
+      post2 = user.posts.create(title: 'Post 2', text: 'Text 2', comment_counter: 1, likes_counter: 3)
+      post3 = user.posts.create(title: 'Post 3', text: 'Text 3', comment_counter: 0, likes_counter: 2)
+
+      visit user_path(user)
+
+      within('.user_button') do
+        click_link('See all posts')
+      end
+
+      expect(page).to have_content(post1.title)
+      expect(page).to have_content(post2.title)
+      expect(page).to have_content(post3.title)
     end
   end
 end
-
