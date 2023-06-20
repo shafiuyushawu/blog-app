@@ -80,8 +80,6 @@ RSpec.describe User, type: :system do
       page.has_button?('See all posts')
     end
 
-
-
     it "redirects to the user's posts index page" do
       user = User.create(name: 'John Doe', photo: '', bio: 'Bio text', post_counter: 3)
       post1 = user.posts.create(title: 'Post 1', text: 'Text 1', comment_counter: 2, likes_counter: 5)
