@@ -9,7 +9,7 @@
     </div>
     <div class="border flex justify-between w-9/12 gap-4 shadow-xl p-4">
       <h1 class="text-4xl"><%= @user.name %></h1>
-      <p>Number of posts: <%= @user.post_counter %></p>
+      <p>Number of posts: <%= @user.posts.size %></p>
     </div>
   </div>
   <div>
@@ -23,17 +23,17 @@
           <p><%= post.text %></p>
         </div>
         <div class='grid grid-row items-end gap-4'>
-          <p class='text-sm'>Comments: <%= post.comment_counter %>, Likes: <%= post.likes_counter %></p>
+          <p class='text-sm'>Comments: <%= post.comments.size %>, Likes: <%= post.likes_counter %></p>
         </div>
       </div>
-      <div class=" flex flex-col justify-between shadow-xl gap-4 p-4">
-        <% if post.recent_five_comments.empty?%>
+      <div class="flex flex-col justify-between shadow-xl gap-4 p-4">
+        <% if post.comments.empty? %>
           <p>No comments</p>
-        <%else%>
-          <%post.recent_five_comments.each do |comment|%>
-            <p><%=comment.author.name%>: <%=comment.text%></p>
-          <%end%>
-        <%end%>
+        <% else %>
+          <% post.comments.each do |comment| %>
+            <p><%= comment.author.name %>: <%= comment.text %></p>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   <% end %>

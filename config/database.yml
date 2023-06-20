@@ -6,14 +6,15 @@ default: &default
 development:
   <<: *default
   database: blog_app_development
-  username: shafiu
-  password: "Soccer"
+  username: postgres
+  password: Soccer
   port: 5432
 
 test:
   <<: *default
   database: blog_app_test
-
+  username: postgres
+  password: Soccer
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
