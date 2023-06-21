@@ -1,7 +1,6 @@
 module ApplicationHelper
 end
 
-
 # <div class="flex flex-col items-center justify-center">
 #   <h2 class="text-4xl">Sign up</h2>
 #   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -37,4 +36,3 @@ end
 #   <br />
 #   <%= render "devise/shared/links" %>
 # </div>
-
