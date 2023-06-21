@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :posts, only: [:index, :show], param: :id 
+  resources :posts, only: [:index, :show], param: :id 
 end
