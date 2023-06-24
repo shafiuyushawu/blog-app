@@ -16,7 +16,7 @@
     <%= link_to "Add New Post", new_user_post_path(user_id: @user.id), class: "btn btn-success btn-sm" %>
   </div>
   <% @posts.each do |post| %>
-    <%= link_to user_post_path(user_id: @user.id, author_id: post.id) do %>
+    <%= link_to user_post_path(@user, post) do %>
       <div class="border border-[#bdc3c7] hover:border-[#2980b9]  flex justify-between shadow-xl gap-4 p-4">
         <div>
           <h1 class='text-2xl'><%= post.title %></h1>

@@ -7,7 +7,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(text: comment_params[:text], post_id: params[:post_id], author_id: current_user[:id])
 
     if @comment.save
-      redirect_to user_post_path(@user, @post), notice: 'Comment created successfully.'
+      redirect_to user_post_path(author_id: params[:user_id], id: params[:post_id]),
+      notice: 'Comment added successfully' 
     else
       render :new
     end
