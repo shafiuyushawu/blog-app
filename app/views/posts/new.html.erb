@@ -1,6 +1,6 @@
 <h1 class="text-3xl mb-5">Create a Post</h1>
 
-<%= form_with model: @post, url: user_posts_path do |form| %>
+<%= form_with(model: @post, url: user_posts_path, method: :post) do |form| %>
   <div class="flex flex-col gap-4">
     <div class="field">
       <%= form.text_field :title, size:"65x6", placeholder: "Post title", class: "w-1/2" %>
