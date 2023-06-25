@@ -12,10 +12,13 @@
   <div class="flex gap-2">
     <%= link_to "Add comments", new_user_post_comment_path(@user, @post), class: "btn btn-success btn-sm" %>
     <%= button_to "Add Likes", user_post_likes_path(@user, @post), method: :post, class: "btn btn-info btn-sm"%>
-    <%= button_to user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' }, id: 'dell-post-btn' do %>
-      <%= hidden_field_tag :id, @post.id %>
-      <%= submit_tag 'delete post'%>
+    <% if can? :destroy, @post %>
+        <%= button_to user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' }, id: 'dell-post-btn' do %>
+          <%= hidden_field_tag :id, @post.id %>
+        <%= submit_tag 'delete post' %>
     <% end %>
+<% end %>
+
   </div>
   </div>
   <div class="border-[#bdc3c7]  grid p-10 gap-10 shadow-xl ">
@@ -24,8 +27,10 @@
     <%else%>
       <%@comments.each do |comment|%>
         <p> <%=comment.author.name%>: <%= comment.text%> </p>
-        <%=button_to user_post_comment_path(@user, @post, comment), method: :delete, data: { confirm: 'Are you sure?' },  class: 'del-post-btn' do %>
-          <%=submit_tag '|Delete', title: 'delete comment',  id: 'delete'%>
+        <%if can? :destroy, comment%>
+          <%=button_to user_post_comment_path(@user, @post, comment), method: :delete, data: { confirm: 'Are you sure?' },  class: 'del-post-btn' do %>
+            <%=submit_tag '|Delete', title: 'delete comment',  id: 'delete'%>
+          <%end%>
         <%end%>
       <%end%>
     <%end%>
